@@ -24,7 +24,7 @@ could be added. Most notably, I’m looking for an app with the ability to provi
 left on the list. Additionally, a motivational quote should be displayed on screen every time a new task is added to the list. Instead of contacting the 
 developers of the current app I’m using, I decided to just create my own To-Do List application.
 
-##User Stories
+## User Stories
 - As a user, I want to be able to add tasks to a to-do list.
 - As a user, I want to be able to toggle tasks from being incomplete to complete, and complete to incomplete if necessary.
 - As a user, I want to be able to remove tasks (regardless of completion) off the to-do list.
