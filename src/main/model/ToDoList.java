@@ -38,12 +38,10 @@ public class ToDoList {
      * otherwise t1 is removed from toDoListIncomplete.
      */
     public void removeTask(Task t1) {
-        if (toDoListComplete.size() >= 1 || toDoListIncomplete.size() >= 1) {
-            if (toDoListComplete.contains(t1)) {
-                toDoListComplete.remove(t1);
-            } else {
-                toDoListIncomplete.remove(t1);
-            }
+        if (toDoListComplete.contains(t1)) {
+            toDoListComplete.remove(t1);
+        } else {
+            toDoListIncomplete.remove(t1);
         }
     }
 
@@ -59,6 +57,7 @@ public class ToDoList {
             t1.setCompletion(true);
         }
     }
+
 
     public ArrayList<Task> getListOfCompletedTasks() {
         return toDoListComplete;
