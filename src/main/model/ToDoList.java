@@ -48,13 +48,19 @@ public class ToDoList {
 
     /*
      * MODIFIES: Task t1
-     * EFFECTS: reverses whatever the boolean variable completion is set to.
+     * EFFECTS: reverses whatever the boolean variable completion is set to,
+     * and adds task onto completed list if task was originally
+     * incomplete, and vice versa.
      */
     public void toggleCompletion(Task t1) {
         if (t1.getCompletion() == true) {
             t1.setCompletion(false);
+            toDoListIncomplete.add(t1);
+            toDoListComplete.remove(t1);
         } else {
             t1.setCompletion(true);
+            toDoListComplete.add(t1);
+            toDoListIncomplete.remove(t1);
         }
     }
 

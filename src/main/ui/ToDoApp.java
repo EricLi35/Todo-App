@@ -16,9 +16,6 @@ public class ToDoApp {
     private boolean boo4;
     private boolean boo5;
     private boolean boo6;
-    private boolean boo7;
-    private boolean found;
-    private boolean found2;
 
     Scanner in = new Scanner(System.in);
 
@@ -128,58 +125,21 @@ public class ToDoApp {
         }
     }
 
-    private void changeHelper() {
-        boo5 = false;
-        found2 = false;
-        System.out.println("Please type the name of the task who's completion you want changed.");
-        s2 = in.next();
-        for (int i = 0; i < tdl.getListOfUncompletedTasks().size(); i++) {
-            if ((tdl.getListOfUncompletedTasks().get(i).getTask()).equalsIgnoreCase(s2)) {
-                boo5 = true;
-                found2 = true;
-                tdl.addTask(new Task(s2, true));
-                tdl.removeTask(tdl.getListOfUncompletedTasks().get(i));
-            }
-        }
-    }
-
-    private void changeHelper2() {
-        found = false;
-        {
-            for (int i = 0; i < tdl.getListOfCompletedTasks().size(); i++) {
-                if ((tdl.getListOfCompletedTasks().get(i).getTask()).equalsIgnoreCase(s2)) {
-                    tdl.addTask(new Task(s2, false));
-                    tdl.removeTask(tdl.getListOfCompletedTasks().get(i));
-                    found = true;
-                }
-            }
-            if (found == true) {
-                System.out.println(s2 + " is now set to NOT completed" + '\n');
-            } else {
-                System.out.println("The task " + s2 + " was not found");
-            }
-        }
-    }
-
     private void changeCompletion() {
-        boo7 = false;
-        while (boo7 == false) {
-            changeHelper();
-            if (boo5 == false) {
-                changeHelper2();
-            } else {
-                if (found2 == true) {
-                    System.out.println(s2 + " is now set to COMPLETED" + '\n');
-                } else {
-                    System.out.println("The task " + s2 + " was not found");
-                }
+        System.out.println("type name of task that you toggled");
+        s2 = in.next();
+        boo5 = false;
+        for (int i = 0; i < tdl.getListOfUncompletedTasks().size(); i++) {
+            if (tdl.getListOfUncompletedTasks().get(i).getTask().equalsIgnoreCase(s2)) {
+                boo5 = true;
+                tdl.toggleCompletion(tdl.getListOfUncompletedTasks().get(i));
             }
-            System.out.println("Do you want to toggle another task? Type y for yes, n for no.");
-            String s1 = in.next();
-            if (s1.equalsIgnoreCase("y")) {
-                boo7 = false;
-            } else {
-                boo7 = true;
+        }
+        if (boo5 == false) {
+            for (int i = 0; i < tdl.getListOfCompletedTasks().size(); i++) {
+                if (tdl.getListOfCompletedTasks().get(i).getTask().equalsIgnoreCase(s2)) {
+                    tdl.toggleCompletion(tdl.getListOfCompletedTasks().get(i));
+                }
             }
         }
     }
