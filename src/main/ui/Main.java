@@ -2,19 +2,22 @@ package ui;
 
 import model.Task;
 import model.ToDoList;
-
+import java.util.*;
 import java.util.ArrayList;
 
 public class Main extends ToDoList {
     public static void main(String[] args) {
         new ToDoApp();
+//        Scanner in = new Scanner(System.in);
+//
+//        String s1;
+//
+//        System.out.println("Type out a sentence");
+//        s1 = in.nextLine();
+//
+//        System.out.println(s1);
 
-//        boolean boo = false;
-//        boo = !boo;
-//        System.out.println(boo);
-//        ArrayList<Task> toDoListIncomplete = new ArrayList<>();
-//        Task t1 = new Task("math", false);
-//        Task t2 = new Task("science", false);
-//        Task t3 = new Task("stats", false);
+
+
     }
 }

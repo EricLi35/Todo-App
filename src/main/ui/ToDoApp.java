@@ -10,12 +10,19 @@ public class ToDoApp {
     private Task t1;
     private String s1;
     private String s2;
+    private String s3;
+    private String s4;
+    private String s5;
     private boolean boo1;
     private boolean boo2;
     private boolean boo3;
     private boolean boo4;
     private boolean boo5;
     private boolean boo6;
+    private boolean boo7;
+    private boolean boo8;
+    private boolean boo9;
+    private boolean boo10;
 
     Scanner in = new Scanner(System.in);
 
@@ -42,10 +49,17 @@ public class ToDoApp {
 
     private void askDescriptionAndCompletion() {
         System.out.println("Type description of task");
-        s1 = in.next();
+        boo7 = false;
+
+        while (boo7 == false) {
+            s1 = in.nextLine();
+            if (s1.length() != 0) {
+                boo7 = true;
+            }
+        }
         boo6 = false;
         while (boo6 == false) {
-            System.out.println("Is the task complete? Type y for yes, and n for no.");
+            System.out.println("Is \"" + s1 + "\" complete? Type y for yes, and n for no.");
             String c1 = in.next();
             if (c1.equalsIgnoreCase("y")) {
                 boo1 = true;
@@ -55,8 +69,7 @@ public class ToDoApp {
                 boo6 = true;
 
             } else {
-                System.out.println("Invalid input. Please try again.");
-                boo6 = false;
+                System.out.println('\n' + "Invalid input. Please try again.");
             }
         }
     }
@@ -89,21 +102,21 @@ public class ToDoApp {
     private void intersection() {
         System.out.println("Type r to remove task, a to add another task.");
         System.out.println("Type c to change completion, v to view lists, q to quit.");
-        String s1 = in.next();
-        if (s1.equalsIgnoreCase("a")) {
+        s4 = in.next();
+        if (s4.equalsIgnoreCase("a")) {
             addTask();
         }
-        if (s1.equalsIgnoreCase("r")) {
+        if (s4.equalsIgnoreCase("r")) {
             removeTask();
         }
-        if (s1.equalsIgnoreCase("c")) {
-            changeCompletion();
+        if (s4.equalsIgnoreCase("c")) {
+            changeCompletionMain();
         }
-        if (s1.equalsIgnoreCase("v")) {
+        if (s4.equalsIgnoreCase("v")) {
             printAllTasks();
             printSummary();
         }
-        if (s1.equalsIgnoreCase("q")) {
+        if (s4.equalsIgnoreCase("q")) {
             boo2 = true;
             printAllTasks();
             printSummary();
@@ -112,61 +125,93 @@ public class ToDoApp {
 
     private void addTask() {
         boo3 = false;
+
         while (boo3 == false) {
             askDescriptionAndCompletion();
             createAndAdd(s1, boo1);
-            System.out.println("Do you want to add another task? Type y for yes, n for no.");
-            String s1 = in.next();
-            if (s1.equalsIgnoreCase("y")) {
-                boo3 = false;
-            } else {
-                boo3 = true;
+            boo9 = false;
+
+            while (boo9 == false) {
+                System.out.println("Do you want to add another task? Type y for yes, n for no.");
+                s3 = in.next();
+
+                if (s3.equalsIgnoreCase("y")) {
+                    boo3 = false;
+                    boo9 = true;
+                } else if (s3.equalsIgnoreCase("n")) {
+                    boo3 = true;
+                    boo9 = true;
+                } else {
+                    System.out.println('\n' + "Invalid input. Please try again");
+                }
+            }
+
+        }
+    }
+
+
+    private void changeCompletionMain() {
+        System.out.println("Type name of task that you want its completion toggled");
+        boo8 = false;
+        boo10 = false;
+        while (boo8 == false) {
+            s2 = in.nextLine();
+            if (s2.length() != 0) {
+                boo8 = true;
+            }
+        }
+        boo5 = false;
+        changeCompletionIncomplete();
+        changeCompletionComplete();
+        if (boo10 == false) {
+            System.out.println("The task " + '\'' + s2 + '\'' + " could not be found" + '\n');
+        }
+    }
+
+
+    private void changeCompletionIncomplete() {
+        for (int i = 0; i < tdl.getListOfUncompletedTasks().size(); i++) {
+            if (tdl.getListOfUncompletedTasks().get(i).getTask().equalsIgnoreCase(s2)) {
+                boo5 = true;
+                boo10 = true;
+                tdl.toggleCompletion(tdl.getListOfUncompletedTasks().get(i));
+                System.out.println("The task " + '\'' + s2 + '\'' + " has been moved to completed" + '\n');
             }
         }
     }
 
-    private void changeCompletion() {
-        System.out.println("type name of task that you toggled");
-        s2 = in.next();
-        boo5 = false;
-        for (int i = 0; i < tdl.getListOfUncompletedTasks().size(); i++) {
-            if (tdl.getListOfUncompletedTasks().get(i).getTask().equalsIgnoreCase(s2)) {
-                boo5 = true;
-                tdl.toggleCompletion(tdl.getListOfUncompletedTasks().get(i));
-            }
-        }
+    private void changeCompletionComplete() {
         if (boo5 == false) {
             for (int i = 0; i < tdl.getListOfCompletedTasks().size(); i++) {
                 if (tdl.getListOfCompletedTasks().get(i).getTask().equalsIgnoreCase(s2)) {
                     tdl.toggleCompletion(tdl.getListOfCompletedTasks().get(i));
+                    boo10 = true;
+                    System.out.println("The task " + '\'' + s2 + '\'' + " has been moved to uncompleted" + '\n');
                 }
             }
         }
     }
 
+
     private void removeTask() {
+        System.out.println("Please type the name of the task that you want removed");
         boo4 = false;
         while (boo4 == false) {
-            System.out.println("Please type the name of the task that you want removed");
-            String ss = in.next();
-            for (int i = 0; i < tdl.getListOfUncompletedTasks().size(); i++) {
-                if ((tdl.getListOfUncompletedTasks().get(i).getTask()).equalsIgnoreCase(ss)) {
-                    tdl.removeTask(tdl.getListOfUncompletedTasks().get(i));
-                }
-            }
-            for (int i = 0; i < tdl.getListOfCompletedTasks().size(); i++) {
-                if ((tdl.getListOfCompletedTasks().get(i).getTask()).equalsIgnoreCase(ss)) {
-                    tdl.removeTask(tdl.getListOfCompletedTasks().get(i));
-                }
-            }
-            System.out.println("Do you want to remove another task? Type y for yes, n for no.");
-            String s1 = in.next();
-            if (s1.equalsIgnoreCase("y")) {
-                boo4 = false;
-            } else {
+            s5 = in.nextLine();
+            if (s5.length() != 0) {
                 boo4 = true;
             }
         }
+        for (int i = 0; i < tdl.getListOfUncompletedTasks().size(); i++) {
+            if ((tdl.getListOfUncompletedTasks().get(i).getTask()).equalsIgnoreCase(s5)) {
+                tdl.removeTask(tdl.getListOfUncompletedTasks().get(i));
+            }
+        }
+        for (int i = 0; i < tdl.getListOfCompletedTasks().size(); i++) {
+            if ((tdl.getListOfCompletedTasks().get(i).getTask()).equalsIgnoreCase(s5)) {
+                tdl.removeTask(tdl.getListOfCompletedTasks().get(i));
+            }
+        }
+        System.out.println(s5 + " has been removed from the todo list" + '\n');
     }
-
 }

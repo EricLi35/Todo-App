@@ -47,7 +47,7 @@ public class ToDoList {
 
 
     /*
-     * MODIFIES: Task t1
+     * MODIFIES: this
      * EFFECTS: reverses whatever the boolean variable completion is set to,
      * and adds task onto completed list if task was originally
      * incomplete, and vice versa.
