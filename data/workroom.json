@@ -1,8 +1,7 @@
 {
-    "Incomplete tasks": [
-        "test2"
-    ],
+    "Incomplete tasks": ["27"],
     "Completed tasks": [
-        "project phase2"
+        "project phase2",
+        "test2"
     ]
 }

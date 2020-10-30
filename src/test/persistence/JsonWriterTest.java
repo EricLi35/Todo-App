@@ -25,7 +25,7 @@ public class JsonWriterTest extends JsonTest {
 
 
     @Test
-    void testWriterEmptyWorkroom() {
+    void testWriterEmptyTodolist() {
         try {
             ToDoList tdl = new ToDoList();
             JsonWriter writer = new JsonWriter("./data/testWriterEmptyTodoList.json");
@@ -42,7 +42,7 @@ public class JsonWriterTest extends JsonTest {
     }
 
     @Test
-    void testWriterGeneralWorkroom() {
+    void testWriterGeneralTodolist() {
         try {
             ToDoList tdl = new ToDoList();
             tdl.addTask(new Task("Math" , false));
