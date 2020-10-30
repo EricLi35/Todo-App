@@ -31,7 +31,8 @@ developers of the current app I’m using, I decided to just create my own To-Do
 - As a user, I want to be able to display messages depending on the behaviour of the aforementioned feature (say “good job!” when removing a completed task and say “never give up!” when removing an incompleted task).
 - As a user, I want to be able to view the to-do list and see what tasks are left.
 - As a user, I want to be able to display messages with varying intensity depending on how many tasks have been added to the to-do list. For example, display “time to get started!” when the 5th task is added, and display “what are you waiting for?!” when the 10th task is added.
-
+- As a user, I want to be able to save my to-do list to file.
+- As a user, I want to be able to load my to-do list from file.
 
 
 

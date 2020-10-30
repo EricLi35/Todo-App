@@ -10,7 +10,7 @@ public class Task {
 
     /*
      * REQUIRES: description has a non-zero length
-     * EFFECTS: name of task is set to description, and task's completion is set to boo1.
+     * EFFECTS: constructs a task whose name is set to description, and completion is set to boo1.
      */
     public Task(String description, boolean boo1) {
         task = description;

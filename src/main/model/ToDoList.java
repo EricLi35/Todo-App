@@ -1,9 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;                 // reformat code: ctrl+alt+l
 
 // Represents 2 lists, with 1 of them storing completed tasks, and the other storing uncompleted tasks
-public class ToDoList {
+public class ToDoList implements Writable {
 
     private ArrayList<Task> toDoListComplete;           // a list of all the tasks that are completed
     private ArrayList<Task> toDoListIncomplete;         // a list of all the tasks that are uncompleted
@@ -79,6 +83,31 @@ public class ToDoList {
 
     public int getNumberOfIncompleteTasks() {
         return toDoListIncomplete.size();
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("Incomplete tasks", incompleteTasksToJson());
+        json.put("Completed tasks", completeTasksToJson());
+        return json;
+    }
+
+    private JSONArray incompleteTasksToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (int i = 0; i < toDoListIncomplete.size(); i++) {
+            jsonArray.put(toDoListIncomplete.get(i).getTask());
+        }
+        return jsonArray;
+    }
+
+
+    private JSONArray completeTasksToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (int i = 0; i < toDoListComplete.size(); i++) {
+            jsonArray.put(toDoListComplete.get(i).getTask());
+        }
+        return jsonArray;
     }
 
 
