@@ -64,6 +64,7 @@ public class List extends JFrame implements ActionListener {
         Task t3 = new Task("Stats", false);
         tdl.addTask(t3);
 
+        System.out.println("add");
         listModel = new DefaultListModel();
         listModel.addElement(t1.getTask());
         listModel.addElement(t2.getTask());
