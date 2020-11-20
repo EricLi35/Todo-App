@@ -42,3 +42,6 @@ public class JsonWriter {
     }
 
 }
+
+// CITATIONS
+// Took chunks of sample code from JsonSerializationDemo

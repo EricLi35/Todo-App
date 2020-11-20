@@ -2,8 +2,6 @@ package ui;
 
 import model.Task;
 import model.ToDoList;
-import org.json.JSONArray;
-import persistence.JsonWriter;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -13,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+// Represents the GUI of a todolist
 public class List extends JFrame implements ActionListener {
 
     private ToDoList tdl = new ToDoList();
@@ -22,7 +21,13 @@ public class List extends JFrame implements ActionListener {
     private static final String addTask = "Add task";
     private static final String removeTask = "Remove task";
     private JTextField textField;
+    private JScrollPane listScrollPane;
 
+    // MODIFIES: this
+    // EFFECTS: calls the JFrame superconstructor and sets the title to "Todo List"
+    // Perform basic setup methods for list
+    // Creates new listScrollPane and initializes Jpanel, and adding 4 buttons on that panel
+    // Initializes textfield and adds that to buttonPanel
     public List() {
         super("Todo List");
 
@@ -33,7 +38,7 @@ public class List extends JFrame implements ActionListener {
         list.setSize(600, 400);
 //        list.setSelectedIndex(0);
 //        list.setVisibleRowCount(5);
-        JScrollPane listScrollPane = new JScrollPane(list);
+        listScrollPane = new JScrollPane(list);
 
 
         buttonPanel = new JPanel();
@@ -56,24 +61,23 @@ public class List extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    // MODIFIES: this
+    // EFFECTS: Assigns and initializes 2 new tasks, then adds it to the list
     public void createAndAddTasks() {
-        Task t1 = new Task("Hello", false);
-        tdl.addTask(t1);
         Task t2 = new Task("Math", false);
         tdl.addTask(t2);
         Task t3 = new Task("Stats", false);
         tdl.addTask(t3);
-
-        System.out.println("add");
         listModel = new DefaultListModel();
-        listModel.addElement(t1.getTask());
         listModel.addElement(t2.getTask());
         listModel.addElement(t3.getTask());
-        listModel.removeElement(t1.getTask());
         list = new JList(listModel);
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: Assigns and initializes a new JButton, meant for adding tasks
+    // Create an action command specific to the functionality of the button
     public void createAddButton() {
         JButton addButton = new JButton(addTask);
         buttonPanel.add(addButton);
@@ -81,6 +85,9 @@ public class List extends JFrame implements ActionListener {
         addButton.addActionListener(this);
     }
 
+    // MODIFIES: this
+    // EFFECTS: Assigns and initializes a new JButton, meant for removing tasks
+    // Create an action command specific to the functionality of the button
     public void createRemoveButton() {
         JButton removeButton = new JButton(removeTask);
         buttonPanel.add(removeButton);
@@ -88,6 +95,9 @@ public class List extends JFrame implements ActionListener {
         removeButton.addActionListener(this);
     }
 
+    // MODIFIES: this
+    // EFFECTS: Assigns and initializes a new JButton, meant for loading tasks
+    // Create an action command specific to the functionality of the button
     public void createLoadButton() {
         JButton loadButton = new JButton("Load Data");
         buttonPanel.add(loadButton);
@@ -95,6 +105,9 @@ public class List extends JFrame implements ActionListener {
         loadButton.addActionListener(this);
     }
 
+    // MODIFIES: this
+    // EFFECTS: Assigns and initializes a new JButton, meant for saving tasks
+    // Create an action command specific to the functionality of the button
     public void createSaveButton() {
         JButton saveButton = new JButton("Save Data");
         buttonPanel.add(saveButton);
@@ -102,10 +115,8 @@ public class List extends JFrame implements ActionListener {
         saveButton.addActionListener(this);
     }
 
-    public static void main(String[] args) {
-        new List();
-    }
-
+    // MODIFIES: this
+    // EFFECTS: Assigns and initailizes a new clip, opens that clip and starts playing the sound
     static void playSound(File sound) {
         try {
             Clip clip = AudioSystem.getClip();
@@ -117,7 +128,17 @@ public class List extends JFrame implements ActionListener {
         }
     }
 
+    public static void main(String[] args) {
+        new List();
+    }
+
     @Override
+    // MODIFIES: this
+    //EFFECTS: if ActionCommand is remove, get the index selected via mouse or arrow keys and remove it from the list.
+    // if nothing is selected, throw ArrayIndexOutOfBoundsException, label is simply for filler, so that if the user
+    // clicks remove but nothing is selected, an exception wouldn't destroy the GUI
+    // if ActionCommand is add, add the text from the textField to list, then create and initialize wav file called
+    // Roddy2 via the relative path. Call the playSound method, and set the textField to an empty string.
     public void actionPerformed(ActionEvent e) {
         JLabel label = new JLabel();
         buttonPanel.add(label);
@@ -140,3 +161,9 @@ public class List extends JFrame implements ActionListener {
 
 
 }
+
+// CITATIONS:
+// Took bits and pieces of how Lists work from the List Demos on the Oracle website, ui swing section in tutorials
+// Learned how action commands work using the "Swing JLabel text change on the running application" on stackOverflow
+// Learned how to play a sound clip from the Youtube video "Java: How to play .wav files"
+// by JavaTutorials101

@@ -66,3 +66,6 @@ public class JsonReader {
 
 
 }
+
+// CITATIONS
+// Took chunks of sample code from JsonSerializationDemo

@@ -31,7 +31,8 @@ developers of the current app I’m using, I decided to just create my own To-Do
 - As a user, I want to be able to view the to-do list and see what tasks are left.
 - As a user, I want to be able to save my to-do list to file.
 - As a user, I want to be able to load my to-do list from file.
-
-
+- As a user, I want to be able to add multiple tasks to a todo list
+- As a user, I want to be able to load and save the state of the application
+- As a user, I want to be able to play a sound when a new task is added
 
 

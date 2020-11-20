@@ -85,7 +85,10 @@ public class ToDoList implements Writable {
         return toDoListIncomplete.size();
     }
 
+
     @Override
+    // MODIFIES: json
+    // EFFECTS: writes the 2 types of task to file
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("Incomplete tasks", incompleteTasksToJson());
@@ -93,6 +96,8 @@ public class ToDoList implements Writable {
         return json;
     }
 
+    // MODIFIES: jsonArray
+    // EFFECTS: puts list of list of incomplete tasks into jsonArray
     private JSONArray incompleteTasksToJson() {
         JSONArray jsonArray = new JSONArray();
         for (int i = 0; i < toDoListIncomplete.size(); i++) {
@@ -101,7 +106,8 @@ public class ToDoList implements Writable {
         return jsonArray;
     }
 
-
+    // MODIFIES: jsonArray
+    // EFFECTS: puts list of list of complete tasks into jsonArray
     private JSONArray completeTasksToJson() {
         JSONArray jsonArray = new JSONArray();
         for (int i = 0; i < toDoListComplete.size(); i++) {
