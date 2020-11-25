@@ -18,6 +18,7 @@ public class Task {
         completion = boo1;
 
     }
+
     public String getTask() {
         return task;
     }
