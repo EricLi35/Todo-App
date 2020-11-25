@@ -35,4 +35,5 @@ developers of the current app I’m using, I decided to just create my own To-Do
 - As a user, I want to be able to load and save the state of the application
 - As a user, I want to be able to play a sound when a new task is added
 
-
+Phase 4: Task 2
+I chose to implement the Map interface somewhere in my code. The specific class where the Map interface was used is the ToDoApp class.

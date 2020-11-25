@@ -72,7 +72,6 @@ public class List extends JFrame implements ActionListener {
         listModel.addElement(t2.getTask());
         listModel.addElement(t3.getTask());
         list = new JList(listModel);
-
     }
 
     // MODIFIES: this
@@ -116,7 +115,7 @@ public class List extends JFrame implements ActionListener {
     }
 
     // MODIFIES: this
-    // EFFECTS: Assigns and initailizes a new clip, opens that clip and starts playing the sound
+    // EFFECTS: Assigns and initializes a new clip, opens that clip and starts playing the sound
     static void playSound(File sound) {
         try {
             Clip clip = AudioSystem.getClip();

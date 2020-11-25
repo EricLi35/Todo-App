@@ -1,5 +1,6 @@
 package model;
 
+
 // represents a "task". Each task has 2 characteristics composed of the actual
 // description which is a string, and a boolean that represents whether the task is completed or not.
 // Tasks can be anything that needs to be completed, and it ranges from washing dishes to vacuuming, etc.
@@ -15,8 +16,8 @@ public class Task {
     public Task(String description, boolean boo1) {
         task = description;
         completion = boo1;
-    }
 
+    }
     public String getTask() {
         return task;
     }

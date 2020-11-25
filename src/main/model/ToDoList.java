@@ -4,7 +4,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
 
-import java.util.ArrayList;                 // reformat code: ctrl+alt+l
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 // Represents 2 lists, with 1 of them storing completed tasks, and the other storing uncompleted tasks
 public class ToDoList implements Writable {
@@ -23,10 +25,12 @@ public class ToDoList implements Writable {
 
     /*
      * MODIFIES: this
-     * EFFECTS: task t1 is added to toDoListComplete if it's a completed task,
-     * otherwise task t1 is added to toDoListIncomplete.
+     * EFFECTS: first checks to see if the task name is already in the complete or incomplete lists.
+     * if it is, throw new TaskAlreadyExistsException.
+     * Otherwise, task is added to toDoListComplete if it's a completed task, or toDoListIncomplete if it's incomplete
      */
     public void addTask(Task t1) {
+
         if (t1.getCompletion() == true) {
             toDoListComplete.add(t1);
         }
@@ -48,7 +52,6 @@ public class ToDoList implements Writable {
             toDoListIncomplete.remove(t1);
         }
     }
-
 
     /*
      * MODIFIES: this
