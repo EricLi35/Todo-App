@@ -14,7 +14,7 @@ import java.io.File;
 // Represents the GUI of a todolist
 public class List extends JFrame implements ActionListener {
 
-    private ToDoList tdl = new ToDoList();
+    private ToDoList tdl;
     private JList list;
     private DefaultListModel listModel;
     private JPanel buttonPanel;
@@ -30,6 +30,8 @@ public class List extends JFrame implements ActionListener {
     // Initializes textfield and adds that to buttonPanel
     public List() {
         super("Todo List");
+
+        tdl = new ToDoList();
 
         createAndAddTasks();
 

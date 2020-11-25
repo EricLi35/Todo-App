@@ -37,3 +37,7 @@ developers of the current app I’m using, I decided to just create my own To-Do
 
 Phase 4: Task 2
 I chose to implement the Map interface somewhere in my code. The specific class where the Map interface was used is the ToDoApp class.
+
+Phase 4: Task 3
+One of the first things that jumped out at me when looking at this UML class design diagram was that some unnecessary coupling is present.
+-The association between ToDoApp and Task is unnecessary, so that arrow could be removed.
