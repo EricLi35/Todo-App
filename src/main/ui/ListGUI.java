@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 // Represents the GUI of a todolist
-public class List extends JFrame implements ActionListener {
+public class ListGUI extends JFrame implements ActionListener {
 
     private ToDoList tdl;
     private JList list;
@@ -28,7 +28,7 @@ public class List extends JFrame implements ActionListener {
     // Perform basic setup methods for list
     // Creates new listScrollPane and initializes Jpanel, and adding 4 buttons on that panel
     // Initializes textfield and adds that to buttonPanel
-    public List() {
+    public ListGUI() {
         super("Todo List");
 
         tdl = new ToDoList();
@@ -130,7 +130,7 @@ public class List extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new List();
+        new ListGUI();
     }
 
     @Override
@@ -153,7 +153,6 @@ public class List extends JFrame implements ActionListener {
         }
         if (e.getActionCommand().equalsIgnoreCase("add")) {
             listModel.addElement(textField.getText());
-            File theBox = new File("C:\\Users\\hello\\IdeaProjects\\CPSC210\\labs\\project_y5y7z\\src\\Roddy2.wav");
             File theBox2 = new File("./src/Roddy2.wav");
             playSound(theBox2);
             textField.setText("");
